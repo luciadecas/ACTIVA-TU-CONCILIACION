@@ -56,6 +56,7 @@
         const button = document.getElementById('toggleButton');
         const status = document.getElementById('status');
         const himnoAudio = document.getElementById('himnoAudio');
+        let blinkInterval;
 
         button.addEventListener('click', () => {
             if (button.classList.contains('active')) {
@@ -64,11 +65,16 @@
                 status.textContent = 'CONCILIACIÓN DESACTIVADA';
                 himnoAudio.pause();
                 himnoAudio.currentTime = 0; // Reinicia el audio
+                clearInterval(blinkInterval); // Detiene el parpadeo
+                status.style.visibility = 'visible'; // Asegura que el texto sea visible
             } else {
                 button.classList.add('active');
                 button.textContent = 'DESACTIVAR';
                 status.textContent = 'CONCILIACIÓN ACTIVADA';
                 himnoAudio.play();
+                blinkInterval = setInterval(() => {
+                    status.style.visibility = status.style.visibility === 'visible' ? 'hidden' : 'visible';
+                }, 1000); // Parpadea cada segundo
             }
         });
     </script>
