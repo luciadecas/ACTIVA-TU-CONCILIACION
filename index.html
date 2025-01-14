@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activa tu Conciliación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            margin-top: 20%;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        #toggleButton {
+            display: inline-block;
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #toggleButton.active {
+            background-color: green;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>ACTIVA TU CONCILIACIÓN</h1>
+    <button id="toggleButton">ACTIVAR</button>
+    <div id="status">CONCILIACIÓN DESACTIVADA</div>
+
+    <script>
+        const button = document.getElementById('toggleButton');
+        const status = document.getElementById('status');
+
+        button.addEventListener('click', () => {
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                button.textContent = 'ACTIVAR';
+                status.textContent = 'CONCILIACIÓN DESACTIVADA';
+            } else {
+                button.classList.add('active');
+                button.textContent = 'DESACTIVAR';
+                status.textContent = 'CONCILIACIÓN ACTIVADA';
+            }
+        });
+    </script>
+</body>
+</html>
