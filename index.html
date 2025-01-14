@@ -14,7 +14,7 @@
         }
 
         h1 {
-            margin-top: 30%;
+            margin-top: 20%;
             font-size: 2.5rem;
             color: #333;
         }
@@ -22,7 +22,7 @@
         #toggleButton {
             display: inline-block;
             margin-top: 20px;
-            width: 180px;
+            width: 100px;
             height: 100px;
             background-color: red;
             border: none;
@@ -50,19 +50,25 @@
     <button id="toggleButton">ACTIVAR</button>
     <div id="status">CONCILIACIÓN DESACTIVADA</div>
 
+    <audio id="himnoAudio" src="himno-nacional-espana.mp3"></audio>
+
     <script>
         const button = document.getElementById('toggleButton');
         const status = document.getElementById('status');
+        const himnoAudio = document.getElementById('himnoAudio');
 
         button.addEventListener('click', () => {
             if (button.classList.contains('active')) {
                 button.classList.remove('active');
                 button.textContent = 'ACTIVAR';
                 status.textContent = 'CONCILIACIÓN DESACTIVADA';
+                himnoAudio.pause();
+                himnoAudio.currentTime = 0; // Reinicia el audio
             } else {
                 button.classList.add('active');
                 button.textContent = 'DESACTIVAR';
                 status.textContent = 'CONCILIACIÓN ACTIVADA';
+                himnoAudio.play();
             }
         });
     </script>
