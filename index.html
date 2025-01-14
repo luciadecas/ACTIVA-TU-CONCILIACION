@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
-            overflow: hidden;
         }
 
         h1 {
@@ -41,38 +40,8 @@
 
         #status {
             margin-top: 20px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #666;
-            font-weight: bold;
-        }
-
-        #status.active {
-            font-size: 2rem;
-        }
-
-        .star {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: yellow;
-            border-radius: 50%;
-            animation: sparkle 2s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes sparkle {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.5);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
         }
     </style>
 </head>
@@ -88,36 +57,18 @@
         const status = document.getElementById('status');
         const himnoAudio = document.getElementById('himnoAudio');
 
-        function createStar() {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * window.innerWidth + 'px';
-            star.style.top = Math.random() * window.innerHeight + 'px';
-            document.body.appendChild(star);
-
-            setTimeout(() => {
-                star.remove();
-            }, 2000);
-        }
-
         button.addEventListener('click', () => {
             if (button.classList.contains('active')) {
                 button.classList.remove('active');
                 button.textContent = 'ACTIVAR';
                 status.textContent = 'CONCILIACIÓN DESACTIVADA';
-                status.classList.remove('active');
                 himnoAudio.pause();
                 himnoAudio.currentTime = 0; // Reinicia el audio
             } else {
                 button.classList.add('active');
                 button.textContent = 'DESACTIVAR';
                 status.textContent = 'CONCILIACIÓN ACTIVADA';
-                status.classList.add('active');
                 himnoAudio.play();
-
-                for (let i = 0; i < 50; i++) { // Reduce el número de estrellas para mejor rendimiento
-                    setTimeout(createStar, i * 50); // Distribuye la creación de estrellas
-                }
             }
         });
     </script>
