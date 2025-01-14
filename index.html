@@ -52,11 +52,12 @@
 
         .star {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 15px;
+            height: 15px;
             background-color: yellow;
             border-radius: 50%;
             animation: sparkle 2s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes sparkle {
@@ -114,8 +115,8 @@
                 status.classList.add('active');
                 himnoAudio.play();
 
-                for (let i = 0; i < 100; i++) {
-                    createStar();
+                for (let i = 0; i < 50; i++) { // Reduce el número de estrellas para mejor rendimiento
+                    setTimeout(createStar, i * 50); // Distribuye la creación de estrellas
                 }
             }
         });
